@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BaliRent — sewa mobil 5 menit dari Bandara I Gusti Ngurah Rai. Lepas kunci, plus driver & BBM, hingga bus pariwisata. Booking via WhatsApp, 24/7.">
+  <title>BaliRent — Sewa Mobil Bali, 5 Menit dari Bandara</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { brand:'#ff6d1f', palm:'#0d3527', pine:'#155239', leaf:'#eef3ea', sun:'#ffc247', ink:'#131f18' },
+      fontFamily: { display:['"Bricolage Grotesque"','sans-serif'], body:['"Instrument Sans"','sans-serif'] },
+    }}}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    ::selection{background:#ff6d1f;color:#fff}
+    .no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+    .dots{background-image:radial-gradient(rgba(19,31,24,.14) 1px,transparent 1px);background-size:22px 22px}
+    .grain{position:relative}
+    .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
+    .text-stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.16);color:transparent}
+    .text-stroke-palm{-webkit-text-stroke:1.5px rgba(13,53,39,.14);color:transparent}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    .marquee{display:flex;width:max-content;animation:marquee 30s linear infinite}
+    .marquee-rev{animation-direction:reverse}
+    .marquee:hover{animation-play-state:paused}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .animate-floaty{animation:floaty 5s ease-in-out infinite}
+    @keyframes dashmove{to{stroke-dashoffset:-220}}
+    .route-dash{animation:dashmove 10s linear infinite}
+    .route-car{display:none}
+    @supports (offset-path:path("M0 0 L10 10")){
+      .route-car{display:block;offset-path:path("M-20 90 C 250 10, 520 130, 780 60 S 1250 20, 1440 70");animation:drive 16s linear infinite}
+      @keyframes drive{to{offset-distance:100%}}
+    }
+    .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.22,1,.36,1)}
+    .faq-a>div{overflow:hidden}
+    .faq-item.open .faq-a{grid-template-rows:1fr}
+    .faq-item.open .faq-plus{transform:rotate(45deg);color:#ff6d1f}
+    .faq-plus{transition:transform .3s,color .3s}
+    .lift:hover{translate:0 -6px}
+    .js-motion [data-reveal]{opacity:0}
+    .js-motion .hero-w{opacity:0}
+    .js-motion .hero-fade{opacity:0}
+    @media (prefers-reduced-motion:reduce){
+      .marquee,.animate-floaty,.route-dash,.route-car{animation:none!important}
+      html{scroll-behavior:auto}
+    }
+  </style>
+</head>
+<body class="bg-leaf font-body text-ink antialiased overflow-x-hidden">
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg"><symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol></svg>
+
+<!-- departure strip -->
+<div class="bg-palm text-leaf/80">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-2 font-mono text-[10px] uppercase tracking-[0.22em]">
+    <span class="flex items-center gap-2.5"><span class="relative flex h-1.5 w-1.5"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sun opacity-75"></span><span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-sun"></span></span>DPS · I Gusti Ngurah Rai — Arrivals</span>
+    <span id="witaClock" class="tabular-nums text-sun">--:--:-- WITA</span>
+    <span class="hidden sm:block">Garasi 5 menit dari terminal ✈</span>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="sticky top-0 z-50 border-b border-ink/10 bg-leaf/90 backdrop-blur">
+  <nav class="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5">
+    <a href="#" class="font-display text-[24px] font-extrabold leading-none tracking-tight">Bali<span class="text-brand">Rent</span><span class="text-sun">.</span><span class="mt-0.5 block text-center font-body text-[7px] font-bold tracking-[0.5em] text-ink/50">TRANS · BALI</span></a>
+    <div class="hidden items-center gap-7 text-[13px] font-semibold md:flex">
+      <a href="#armada" class="relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">Armada</a>
+      <a href="#cara" class="relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">Cara Sewa</a>
+      <a href="#destinasi" class="relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">Destinasi</a>
+      <a href="#testimoni" class="relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">Testimoni</a>
+      <a href="#faq" class="relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-brand after:transition-transform after:duration-300 hover:after:scale-x-100">FAQ</a>
+    </div>
+    <a href="https://wa.me/6281239014069" class="group flex items-center gap-2 rounded-full bg-palm px-5 py-2.5 text-[12px] font-bold text-leaf transition-all duration-300 hover:bg-brand hover:shadow-lg hover:shadow-brand/30"><svg class="h-3.5 w-3.5 transition-transform group-hover:rotate-12" fill="currentColor"><use href="#wa"/></svg>Chat WA</a>
+  </nav>
+</header>
+
+<main>
+<!-- hero -->
+<section class="relative overflow-hidden">
+  <div class="dots absolute inset-0 opacity-40"></div>
+  <div class="absolute -right-48 -top-48 h-[560px] w-[560px] rounded-full bg-sun/25"></div>
+  <div class="absolute -right-24 top-24 hidden h-72 w-72 rounded-full border-2 border-dashed border-palm/15 lg:block"></div>
+  <span class="text-stroke-palm pointer-events-none absolute -left-6 top-1/2 hidden -translate-y-1/2 select-none font-display text-[190px] font-extrabold leading-none xl:block">BALI</span>
+
+  <div class="relative mx-auto grid max-w-6xl items-center gap-14 px-5 pb-24 pt-14 lg:grid-cols-12 lg:pb-32 lg:pt-20">
+    <div class="lg:col-span-7">
+      <div class="hero-fade flex flex-wrap items-center gap-2.5">
+        <span class="flex items-center gap-2 rounded-full bg-palm px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-leaf"><span class="relative flex h-1.5 w-1.5"><span class="absolute h-full w-full animate-ping rounded-full bg-sun opacity-75"></span><span class="relative h-1.5 w-1.5 rounded-full bg-sun"></span></span>Unit ready hari ini</span>
+        <span class="rounded-full border border-ink/15 bg-white/70 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-ink/60">Tuban, Kuta — Bali</span>
+      </div>
+      <h1 class="mt-6 font-display text-[clamp(3rem,8.5vw,6.2rem)] font-extrabold leading-[0.92] tracking-tight">
+        <span class="block overflow-hidden"><span class="hero-w block">MENDARAT,</span></span>
+        <span class="block overflow-hidden"><span class="hero-w block">LANGSUNG <span class="relative inline-block text-brand">GAS.<svg id="gasLine" class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 14" fill="none" preserveAspectRatio="none"><path d="M3 10 C 60 2, 140 2, 197 8" stroke="#ffc247" stroke-width="5" stroke-linecap="round"/></svg></span></span></span>
+      </h1>
+      <p class="hero-fade mt-6 max-w-md text-[15px] leading-7 text-ink/60">Sewa mobil <b class="text-ink">#GapakeRibet</b> di Bali — lepas kunci atau plus driver &amp; BBM. Garasi kami <b class="text-ink">5 menit dari Bandara I Gusti Ngurah Rai</b>; serah terima kunci bisa langsung di parkiran arrival.</p>
+
+      <form id="quickBook" class="hero-fade mt-8 flex flex-col gap-2 rounded-xl border border-ink/10 bg-white p-2.5 shadow-[0_18px_50px_rgba(19,31,24,0.10)] md:flex-row md:items-stretch">
+        <label class="flex flex-1 flex-col gap-1 rounded-lg px-3.5 py-2.5 transition-colors focus-within:bg-leaf"><span class="text-[9px] font-bold uppercase tracking-[0.18em] text-ink/40">Tanggal mulai</span><input id="qbStart" type="date" required class="bg-transparent text-[13px] font-semibold outline-none"></label>
+        <label class="flex flex-1 flex-col gap-1 rounded-lg px-3.5 py-2.5 transition-colors focus-within:bg-leaf md:border-l md:border-ink/10"><span class="text-[9px] font-bold uppercase tracking-[0.18em] text-ink/40">Tanggal selesai</span><input id="qbEnd" type="date" required class="bg-transparent text-[13px] font-semibold outline-none"></label>
+        <label class="flex flex-1 flex-col gap-1 rounded-lg px-3.5 py-2.5 transition-colors focus-within:bg-leaf md:border-l md:border-ink/10"><span class="text-[9px] font-bold uppercase tracking-[0.18em] text-ink/40">Tipe sewa</span><select id="qbType" class="bg-transparent text-[13px] font-semibold outline-none"><option>Lepas Kunci</option><option>Plus Driver &amp; BBM</option><option>Group &amp; Bus</option></select></label>
+        <button type="submit" class="group flex items-center justify-center gap-2 rounded-lg bg-brand px-6 py-3.5 text-[13px] font-bold text-white transition-all hover:bg-palm hover:shadow-lg">Cek Unit <span class="transition-transform duration-300 group-hover:translate-x-1">→</span></button>
+      </form>
+
+      <div class="hero-fade mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-[12px] text-ink/55">
+        <span class="flex items-center gap-1.5"><span class="text-sun">★★★★★</span> <b class="text-ink">4.9</b> di Google</span>
+        <span class="hidden h-4 w-px bg-ink/15 sm:block"></span>
+        <span class="flex items-center gap-2.5"><span class="flex -space-x-2"><span class="grid h-7 w-7 place-items-center rounded-full border-2 border-leaf bg-sun text-[11px]">👩</span><span class="grid h-7 w-7 place-items-center rounded-full border-2 border-leaf bg-pine text-[11px]">👨</span><span class="grid h-7 w-7 place-items-center rounded-full border-2 border-leaf bg-brand text-[11px]">🧑</span></span>500+ traveler bulan ini</span>
+      </div>
+    </div>
+
+    <div id="heroVisual" class="relative lg:col-span-5">
+      <div class="absolute inset-0 translate-x-4 translate-y-4 rotate-2 rounded-[26px] border-2 border-palm/20"></div>
+      <img src="assets/hero-team.jpg" alt="Serah terima unit BaliRent di bandara" class="relative h-[420px] w-full rounded-[26px] object-cover shadow-[0_30px_70px_rgba(13,53,39,0.25)] lg:h-[540px]">
+      <div class="animate-floaty absolute -left-4 top-8 flex items-center gap-3 rounded-xl border border-ink/5 bg-white px-4 py-3 shadow-xl sm:-left-8">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-leaf text-lg">✈️</span>
+        <div><b class="block text-[12px]">Jemput di Arrival Gate</b><span class="text-[10px] text-ink/50">Gratis antar–jemput bandara</span></div>
+      </div>
+      <div class="absolute -bottom-5 left-6 -rotate-3 rounded-lg bg-sun px-4 py-2.5 shadow-lg transition-transform duration-300 hover:rotate-0">
+        <span class="block text-[9px] font-bold uppercase tracking-widest text-palm/60">Mulai dari</span>
+        <b class="font-display text-lg font-extrabold leading-none text-palm">IDR 250K<span class="font-body text-[10px] font-semibold text-palm/60">/hari</span></b>
+      </div>
+      <div class="absolute -right-3 -top-8 h-28 w-28 sm:-right-6">
+        <svg viewBox="0 0 100 100" class="h-full w-full animate-[spin_18s_linear_infinite]">
+          <defs><path id="circ" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs>
+          <circle cx="50" cy="50" r="49" fill="#0d3527"/>
+          <text fill="#eef3ea" font-size="7.8" font-weight="700" letter-spacing="1.7"><textPath href="#circ">5 MENIT DARI BANDARA • DPS • BALIRENT •</textPath></text>
+        </svg>
+        <span class="absolute inset-0 grid place-items-center text-2xl">✈️</span>
+      </div>
+    </div>
+  </div>
+
+  <svg class="pointer-events-none absolute bottom-4 left-0 w-[1400px] max-w-none opacity-30" viewBox="0 0 1400 120" fill="none"><path class="route-dash" d="M-20 90 C 250 10, 520 130, 780 60 S 1250 20, 1440 70" stroke="#0d3527" stroke-width="2" stroke-dasharray="10 12"/></svg>
+  <span class="route-car absolute bottom-16 left-0 text-xl" aria-hidden="true">🚗</span>
+</section>
+
+<!-- destinations marquee -->
+<div class="overflow-hidden border-y-4 border-sun bg-palm py-4">
+  <div class="marquee font-display text-lg font-bold tracking-wide text-leaf/90">
+    <div class="flex items-center gap-8 pr-8"><span>KUTA</span><span class="text-sun">✦</span><span>SEMINYAK</span><span class="text-sun">✦</span><span>CANGGU</span><span class="text-sun">✦</span><span>UBUD</span><span class="text-sun">✦</span><span>ULUWATU</span><span class="text-sun">✦</span><span>NUSA DUA</span><span class="text-sun">✦</span><span>TANAH LOT</span><span class="text-sun">✦</span><span>KINTAMANI</span><span class="text-sun">✦</span><span>AMED</span><span class="text-sun">✦</span><span>LOVINA</span><span class="text-sun">✦</span></div>
+    <div class="flex items-center gap-8 pr-8" aria-hidden="true"><span>KUTA</span><span class="text-sun">✦</span><span>SEMINYAK</span><span class="text-sun">✦</span><span>CANGGU</span><span class="text-sun">✦</span><span>UBUD</span><span class="text-sun">✦</span><span>ULUWATU</span><span class="text-sun">✦</span><span>NUSA DUA</span><span class="text-sun">✦</span><span>TANAH LOT</span><span class="text-sun">✦</span><span>KINTAMANI</span><span class="text-sun">✦</span><span>AMED</span><span class="text-sun">✦</span><span>LOVINA</span><span class="text-sun">✦</span></div>
+  </div>
+</div>
+
+<!-- cara sewa -->
+<section id="cara" class="relative scroll-mt-24 py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div data-reveal><p class="text-[11px] font-bold uppercase tracking-[0.3em] text-brand">#GapakeRibet</p><h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-5xl">Cara sewa dalam <span class="text-brand">4 langkah</span></h2></div>
+      <p data-reveal class="max-w-xs text-sm leading-6 text-ink/55">Semua proses via WhatsApp — dari pilih unit sampai kunci di tangan, rata-rata cuma <b class="text-ink">15 menit</b>.</p>
+    </div>
+    <div class="relative mt-16">
+      <div class="absolute left-0 right-0 top-9 hidden border-t-2 border-dashed border-palm/20 md:block"></div>
+      <div data-reveal-group class="grid gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
+        <div data-reveal class="group relative"><span class="font-display text-[72px] font-extrabold leading-none text-palm/10 transition-colors duration-300 group-hover:text-brand/20">01</span><span class="absolute -top-1 left-1 grid h-9 w-9 place-items-center rounded-full border-2 border-palm bg-leaf text-base transition-all duration-300 group-hover:-rotate-12 group-hover:bg-sun">💬</span><h3 class="mt-4 font-display text-lg font-bold">Chat &amp; pilih unit</h3><p class="mt-2 text-[13px] leading-6 text-ink/55">Kasih tahu tanggal dan mobil incaranmu. Admin balas cepat dengan ketersediaan &amp; harga final.</p></div>
+        <div data-reveal class="group relative"><span class="font-display text-[72px] font-extrabold leading-none text-palm/10 transition-colors duration-300 group-hover:text-brand/20">02</span><span class="absolute -top-1 left-1 grid h-9 w-9 place-items-center rounded-full border-2 border-palm bg-leaf text-base transition-all duration-300 group-hover:-rotate-12 group-hover:bg-sun">🪪</span><h3 class="mt-4 font-display text-lg font-bold">Kirim syarat</h3><p class="mt-2 text-[13px] leading-6 text-ink/55">Foto KTP, SIM A, dan bukti booking. Verifikasi kilat ±5 menit, tanpa deposit ribet.</p></div>
+        <div data-reveal class="group relative"><span class="font-display text-[72px] font-extrabold leading-none text-palm/10 transition-colors duration-300 group-hover:text-brand/20">03</span><span class="absolute -top-1 left-1 grid h-9 w-9 place-items-center rounded-full border-2 border-palm bg-leaf text-base transition-all duration-300 group-hover:-rotate-12 group-hover:bg-sun">📍</span><h3 class="mt-4 font-display text-lg font-bold">Tentukan titik temu</h3><p class="mt-2 text-[13px] leading-6 text-ink/55">Di parkiran bandara, hotel, atau villa. Tim kami yang antar unitnya — 24 jam siap.</p></div>
+        <div data-reveal class="group relative"><span class="font-display text-[72px] font-extrabold leading-none text-palm/10 transition-colors duration-300 group-hover:text-brand/20">04</span><span class="absolute -top-1 left-1 grid h-9 w-9 place-items-center rounded-full border-2 border-palm bg-leaf text-base transition-all duration-300 group-hover:-rotate-12 group-hover:bg-sun">🚗</span><h3 class="mt-4 font-display text-lg font-bold">Gas keliling Bali</h3><p class="mt-2 text-[13px] leading-6 text-ink/55">Cek unit bareng, tanda tangan singkat, kunci di tangan. Uluwatu sampai Kintamani, gas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- armada -->
+<section id="armada" class="scroll-mt-24 border-y border-ink/5 bg-white py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div data-reveal><p class="text-[11px] font-bold uppercase tracking-[0.3em] text-brand">Armada siap jalan</p><h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-5xl">Pilih mobilmu, <span class="text-brand">kami antar kuncinya.</span></h2></div>
+      <p data-reveal class="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/40">Harga per hari · per 24 jam</p>
+    </div>
+    <div data-reveal class="mt-10 flex flex-wrap items-center gap-4">
+      <div class="inline-flex rounded-full border border-ink/10 bg-leaf p-1">
+        <button data-tab="self" class="tab-btn rounded-full px-5 py-2.5 text-[12px] font-bold transition-all duration-300">Lepas Kunci</button>
+        <button data-tab="driver" class="tab-btn rounded-full px-5 py-2.5 text-[12px] font-bold transition-all duration-300">Plus Driver &amp; BBM</button>
+        <button data-tab="group" class="tab-btn rounded-full px-5 py-2.5 text-[12px] font-bold transition-all duration-300">Group &amp; Bus</button>
+      </div>
+      <span id="tabCount" class="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/40"></span>
+    </div>
+    <div id="panel-self" class="tab-panel mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"></div>
+    <div id="panel-driver" class="tab-panel mt-8 hidden grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"></div>
+    <div id="panel-group" class="tab-panel mt-8 hidden space-y-4"></div>
+    <p data-reveal class="mt-8 text-[13px] text-ink/55">Nggak nemu unit yang cocok? <a href="https://wa.me/6281239014069" class="font-bold text-brand underline decoration-dashed underline-offset-4 transition-colors hover:text-palm">Tanya aja dulu →</a> Armada 32+ unit, siapa tahu lagi di garasi.</p>
+  </div>
+</section>
+
+<!-- stats band -->
+<section class="grain relative overflow-hidden bg-palm py-20 text-leaf">
+  <span class="text-stroke pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-display text-[150px] font-extrabold md:text-[220px]">JALAN-JALAN</span>
+  <div class="relative mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-12 px-5 md:grid-cols-4">
+    <div data-reveal class="text-center"><span class="counter font-display text-5xl font-extrabold text-sun md:text-6xl" data-target="32" data-suffix="+">0</span><p class="mt-3 text-[10px] font-bold uppercase tracking-[0.25em] text-leaf/55">Armada siap jalan</p></div>
+    <div data-reveal class="text-center"><span class="counter font-display text-5xl font-extrabold text-sun md:text-6xl" data-target="500" data-suffix="+">0</span><p class="mt-3 text-[10px] font-bold uppercase tracking-[0.25em] text-leaf/55">Traveler / bulan</p></div>
+    <div data-reveal class="text-center"><span class="counter font-display text-5xl font-extrabold text-sun md:text-6xl" data-target="4.9" data-decimals="1">0</span><p class="mt-3 text-[10px] font-bold uppercase tracking-[0.25em] text-leaf/55">Rating Google Maps</p></div>
+    <div data-reveal class="text-center"><span class="counter font-display text-5xl font-extrabold text-sun md:text-6xl" data-target="24" data-suffix="/7">0</span><p class="mt-3 text-[10px] font-bold uppercase tracking-[0.25em] text-leaf/55">Antar–jemput bandara</p></div>
+  </div>
+</section>
+
+<!-- destinasi -->
+<section id="destinasi" class="scroll-mt-24 overflow-hidden py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="flex items-end justify-between gap-6">
+      <div data-reveal><p class="text-[11px] font-bold uppercase tracking-[0.3em] text-brand">Rute favorit</p><h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-5xl">Dari garasi, <span class="text-brand">ke mana aja bisa.</span></h2></div>
+      <div data-reveal class="hidden gap-2 sm:flex">
+        <button id="destPrev" aria-label="Sebelumnya" class="grid h-11 w-11 place-items-center rounded-full border-2 border-ink/15 text-lg transition-all hover:border-palm hover:bg-palm hover:text-leaf">←</button>
+        <button id="destNext" aria-label="Berikutnya" class="grid h-11 w-11 place-items-center rounded-full border-2 border-ink/15 text-lg transition-all hover:border-palm hover:bg-palm hover:text-leaf">→</button>
+      </div>
+    </div>
+  </div>
+  <div id="destScroller" class="no-scrollbar mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:px-[max(20px,calc((100vw-1152px)/2))]">
+    <figure data-reveal class="group relative h-[440px] w-[78vw] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[340px] lg:w-[400px]"><img src="assets/uluwatu.jpg" alt="Uluwatu" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-palm/90 via-palm/20 to-transparent"></div><span class="absolute left-5 top-4 font-display text-6xl font-extrabold text-leaf/25">01</span><figcaption class="absolute inset-x-5 bottom-5"><span class="mb-2 inline-block rounded-full bg-sun px-2.5 py-1 text-[10px] font-bold text-palm">≈ 45 mnt dari garasi</span><b class="block font-display text-2xl font-extrabold text-leaf">Uluwatu</b><p class="mt-1 text-[12px] leading-5 text-leaf/75">Pura di ujung tebing, pantai tersembunyi, dan sunset paling dramatis di Bali.</p></figcaption></figure>
+    <figure data-reveal class="group relative h-[440px] w-[78vw] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[340px] lg:w-[400px]"><img src="assets/tanah-lot.jpg" alt="Tanah Lot" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-palm/90 via-palm/20 to-transparent"></div><span class="absolute left-5 top-4 font-display text-6xl font-extrabold text-leaf/25">02</span><figcaption class="absolute inset-x-5 bottom-5"><span class="mb-2 inline-block rounded-full bg-sun px-2.5 py-1 text-[10px] font-bold text-palm">≈ 50 mnt dari garasi</span><b class="block font-display text-2xl font-extrabold text-leaf">Tanah Lot</b><p class="mt-1 text-[12px] leading-5 text-leaf/75">Ikon Bali — pura di atas batu karang tengah laut. Wajib mampir saat golden hour.</p></figcaption></figure>
+    <figure data-reveal class="group relative h-[440px] w-[78vw] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[340px] lg:w-[400px]"><img src="assets/ubud.jpg" alt="Ubud" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-palm/90 via-palm/20 to-transparent"></div><span class="absolute left-5 top-4 font-display text-6xl font-extrabold text-leaf/25">03</span><figcaption class="absolute inset-x-5 bottom-5"><span class="mb-2 inline-block rounded-full bg-sun px-2.5 py-1 text-[10px] font-bold text-palm">≈ 70 mnt dari garasi</span><b class="block font-display text-2xl font-extrabold text-leaf">Ubud</b><p class="mt-1 text-[12px] leading-5 text-leaf/75">Sawah terasering, monkey forest, dan kuliner sehat. Jantung hijaunya Bali.</p></figcaption></figure>
+    <figure data-reveal class="group relative h-[440px] w-[78vw] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[340px] lg:w-[400px]"><img src="assets/kintamani.jpg" alt="Kintamani" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"><div class="absolute inset-0 bg-gradient-to-t from-palm/90 via-palm/20 to-transparent"></div><span class="absolute left-5 top-4 font-display text-6xl font-extrabold text-leaf/25">04</span><figcaption class="absolute inset-x-5 bottom-5"><span class="mb-2 inline-block rounded-full bg-sun px-2.5 py-1 text-[10px] font-bold text-palm">≈ 2 jam dari garasi</span><b class="block font-display text-2xl font-extrabold text-leaf">Kintamani</b><p class="mt-1 text-[12px] leading-5 text-leaf/75">Ngopi di ketinggian dengan view Gunung &amp; Danau Batur. Dingin, tapi nagih.</p></figcaption></figure>
+    <a href="https://wa.me/6281239014069" class="group grid h-[440px] w-[240px] shrink-0 snap-start place-items-center rounded-2xl bg-brand p-8 text-center text-white transition-colors hover:bg-palm"><span><span class="block font-display text-3xl font-extrabold leading-tight">Mau rute<br>sendiri?</span><span class="mt-4 block text-[12px] text-white/75">Sebutin destinasimu, kami siapkan unit + rutenya.</span><span class="mt-6 inline-block rounded-full bg-white px-5 py-2.5 text-[12px] font-bold text-brand transition-transform duration-300 group-hover:scale-105">Chat kami →</span></span></a>
+  </div>
+</section>
+
+<!-- testimoni -->
+<section id="testimoni" class="scroll-mt-24 border-y border-ink/5 bg-white py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div data-reveal><p class="text-[11px] font-bold uppercase tracking-[0.3em] text-brand">Kata mereka</p><h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-5xl">Review asli dari <span class="text-brand">Google Maps.</span></h2></div>
+      <span data-reveal class="flex items-center gap-2 rounded-full border border-ink/10 bg-leaf px-4 py-2 text-[12px] font-bold"><span class="text-sun">★</span> 4.9 / 5 · ratusan ulasan</span>
+    </div>
+    <div data-reveal-group class="mt-14 grid gap-6 md:grid-cols-3">
+      <blockquote data-reveal class="relative lift rounded-xl border border-ink/10 bg-leaf p-7 transition-all duration-300 hover:shadow-[0_18px_40px_rgba(19,31,24,0.12)]"><span class="absolute -top-5 left-6 font-display text-7xl font-extrabold leading-none text-brand">“</span><div class="text-sun">★★★★★</div><p class="mt-4 text-sm leading-7 text-ink/70">Sangat direkomendasikan! Saya menyewa mobil di sini, meskipun hanya untuk 1 hari. Pelayanannya bagus, proses cepat, dan unitnya bersih.</p><footer class="mt-6 flex items-center gap-3"><span class="grid h-9 w-9 place-items-center rounded-full bg-palm font-display text-sm font-bold text-sun">Y</span><div><b class="block text-[13px]">Yanuar Sitorus</b><span class="text-[10px] uppercase tracking-widest text-ink/40">Review Google</span></div></footer></blockquote>
+      <blockquote data-reveal class="relative lift rounded-xl bg-palm p-7 text-leaf transition-all duration-300 hover:shadow-[0_18px_40px_rgba(13,53,39,0.35)] md:mt-10"><span class="absolute -top-5 left-6 font-display text-7xl font-extrabold leading-none text-sun">“</span><div class="text-sun">★★★★★</div><p class="mt-4 text-sm leading-7 text-leaf/80">Baru pertama menggunakan jasa rental mobil ini, top! Puas dengan semuanya — mobil bagus, admin responsif, serah terima di bandara tanpa drama.</p><footer class="mt-6 flex items-center gap-3"><span class="grid h-9 w-9 place-items-center rounded-full bg-sun font-display text-sm font-bold text-palm">M</span><div><b class="block text-[13px]">Mamiek Trijoko</b><span class="text-[10px] uppercase tracking-widest text-leaf/40">Review Google</span></div></footer></blockquote>
+      <blockquote data-reveal class="relative lift rounded-xl border border-ink/10 bg-leaf p-7 transition-all duration-300 hover:shadow-[0_18px_40px_rgba(19,31,24,0.12)]"><span class="absolute -top-5 left-6 font-display text-7xl font-extrabold leading-none text-brand">“</span><div class="text-sun">★★★★★</div><p class="mt-4 text-sm leading-7 text-ink/70">Puas dan menyenangkan menyewa mobil di Bali. Staff admin ramah, responsif, tim antar jemput tepat waktu. Liburan jadi jauh lebih santai.</p><footer class="mt-6 flex items-center gap-3"><span class="grid h-9 w-9 place-items-center rounded-full bg-brand font-display text-sm font-bold text-white">B</span><div><b class="block text-[13px]">Bayu Pujadi</b><span class="text-[10px] uppercase tracking-widest text-ink/40">Review Google</span></div></footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- faq -->
+<section id="faq" class="scroll-mt-24 py-24">
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <div data-reveal class="lg:sticky lg:top-28">
+        <p class="text-[11px] font-bold uppercase tracking-[0.3em] text-brand">FAQ</p>
+        <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-5xl">Masih <span class="text-brand">mikir-mikir?</span></h2>
+        <p class="mt-5 max-w-sm text-sm leading-7 text-ink/55">Pertanyaan yang paling sering masuk ke WhatsApp kami. Kalau pertanyaanmu belum ada di sini, langsung aja tanya.</p>
+        <a href="https://wa.me/6281239014069" class="mt-7 inline-flex items-center gap-2 rounded-full bg-palm px-6 py-3 text-[13px] font-bold text-leaf transition-all hover:bg-brand hover:shadow-lg hover:shadow-brand/30">Tanya langsung <span>→</span></a>
+      </div>
+    </div>
+    <div id="faqList" class="lg:col-span-7"></div>
+  </div>
+</section>
+
+<!-- cta -->
+<section class="relative overflow-hidden bg-brand py-24 text-white">
+  <div class="pointer-events-none absolute inset-0 flex flex-col justify-center gap-6 opacity-60">
+    <div class="marquee marquee-rev font-display text-[90px] font-extrabold leading-none text-transparent" style="-webkit-text-stroke:1.5px rgba(255,255,255,.25)"><div class="flex gap-10 pr-10"><span>BALIRENT ✦</span><span>BALIRENT ✦</span><span>BALIRENT ✦</span></div><div class="flex gap-10 pr-10" aria-hidden="true"><span>BALIRENT ✦</span><span>BALIRENT ✦</span><span>BALIRENT ✦</span></div></div>
+    <div class="marquee font-display text-[90px] font-extrabold leading-none text-transparent" style="-webkit-text-stroke:1.5px rgba(255,255,255,.25)"><div class="flex gap-10 pr-10"><span>GASKEUN ✦</span><span>GASKEUN ✦</span><span>GASKEUN ✦</span></div><div class="flex gap-10 pr-10" aria-hidden="true"><span>GASKEUN ✦</span><span>GASKEUN ✦</span><span>GASKEUN ✦</span></div></div>
+  </div>
+  <div class="relative mx-auto max-w-3xl px-5 text-center">
+    <h2 data-reveal class="font-display text-5xl font-extrabold tracking-tight md:text-6xl">Siap gas keliling Bali?</h2>
+    <p data-reveal class="mt-4 text-[15px] text-white/80">Amankan unit favoritmu sebelum tanggal penuh. Dibalas cepat — kapan pun kamu mendarat.</p>
+    <div data-reveal class="mt-9 flex flex-wrap items-center justify-center gap-4">
+      <a href="https://wa.me/6281239014069" class="group flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-[13px] font-bold text-brand transition-all hover:bg-palm hover:text-white hover:shadow-2xl"><svg class="h-4 w-4" fill="currentColor"><use href="#wa"/></svg>Chat WhatsApp <span class="transition-transform duration-300 group-hover:translate-x-1">→</span></a>
+      <a href="#armada" class="rounded-full border-2 border-white/40 px-7 py-3.5 text-[13px] font-bold transition-all hover:border-white hover:bg-white/10">Lihat armada dulu</a>
+    </div>
+    <p data-reveal class="mt-7 font-mono text-[10px] uppercase tracking-[0.25em] text-white/60">★ 4.9 Google · 500+ traveler/bulan · 5 menit dari bandara</p>
+  </div>
+</section>
+</main>
+
+<!-- footer -->
+<footer class="bg-palm pb-8 pt-16 text-leaf">
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <a href="#" class="font-display text-3xl font-extrabold tracking-tight">Bali<span class="text-brand">Rent</span><span class="text-sun">.</span></a>
+      <p class="mt-4 max-w-xs text-[13px] leading-6 text-leaf/60">Jasa sewa mobil terpercaya di Bali. Garasi strategis di Tuban — 5 menit dari Bandara I Gusti Ngurah Rai.</p>
+      <div class="mt-6 flex gap-3">
+        <a href="https://wa.me/6281239014069" aria-label="WhatsApp" class="grid h-10 w-10 place-items-center rounded-full border border-leaf/20 transition-all hover:-translate-y-1 hover:border-brand hover:bg-brand"><svg class="h-4 w-4" fill="currentColor"><use href="#wa"/></svg></a>
+        <a href="#" aria-label="Instagram" class="grid h-10 w-10 place-items-center rounded-full border border-leaf/20 text-sm transition-all hover:-translate-y-1 hover:border-brand hover:bg-brand">◎</a>
+        <a href="#" aria-label="TikTok" class="grid h-10 w-10 place-items-center rounded-full border border-leaf/20 text-sm transition-all hover:-translate-y-1 hover:border-brand hover:bg-brand">♪</a>
+      </div>
+    </div>
+    <div class="md:col-span-2"><b class="text-[11px] font-bold uppercase tracking-[0.25em] text-sun">Layanan</b><p class="mt-4 text-[13px] leading-7 text-leaf/60">Lepas Kunci<br>Plus Driver &amp; BBM<br>Group &amp; Bus<br>Airport Transfer</p></div>
+    <div class="md:col-span-3"><b class="text-[11px] font-bold uppercase tracking-[0.25em] text-sun">Kontak</b><p class="mt-4 text-[13px] leading-7 text-leaf/60">📍 Jl. Pelita No.35, Tuban, Kuta, Bali<br>📞 +62 812-3901-4069<br>✉️ hello@balirent.id</p></div>
+    <div class="md:col-span-2"><b class="text-[11px] font-bold uppercase tracking-[0.25em] text-sun">Operasional</b><p class="mt-4 text-[13px] leading-7 text-leaf/60">Senin–Minggu<br><b class="text-leaf">24 jam</b><br>Jemput bandara 24/7</p></div>
+  </div>
+  <div class="mx-auto mt-14 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-leaf/10 px-5 pt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-leaf/40"><span>© 2026 BaliRent — Tuban, Kuta, Bali</span><span>Dibuat dengan ☕ di Pulau Dewata</span></div>
+</footer>
+
+<!-- floating WA -->
+<a href="https://wa.me/6281239014069" aria-label="Chat WhatsApp" class="group fixed bottom-6 right-6 z-50 flex items-center gap-3">
+  <span class="pointer-events-none hidden translate-x-2 rounded-full bg-palm px-4 py-2 text-[11px] font-bold text-leaf opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 sm:block">Butuh bantuan? Chat aja!</span>
+  <span class="relative grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/40 transition-transform duration-300 group-hover:scale-110"><span class="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-30"></span><svg class="relative h-6 w-6" fill="currentColor"><use href="#wa"/></svg></span>
+</a>
+
+<script>
+/* ---------- data ---------- */
+const WA_NUM = '6281239014069';
+const waLink = (msg) => `https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}`;
+const selfCars = [['New Honda HRV Matic','650K'],['Toyota Fortuner Matic','1,000K'],['Daihatsu Xenia Manual','250K'],['Innova Reborn Manual','400K'],['Toyota Hiace Manual','800K'],['Daihatsu Ayla Matic','250K'],['Toyota Agya Matic','250K'],['Toyota Avanza Matic','275K'],['Daihatsu Xenia Matic','275K'],['Toyota Agya GR Matic','300K'],['Suzuki Ignis Matic','300K'],['New Brio Matic','300K'],['New Ertiga Matic','300K'],['Toyota Sienta Matic','300K'],['New Xenia Matic','350K'],['Daihatsu Rocky Matic','350K'],['Innova Grand Matic','350K'],['Mitsubishi Xpander Matic','375K'],['Xpander Facelift Matic','400K'],['Daihatsu Terios Matic','400K']];
+const driverCars = [['Toyota Fortuner Matic','1,400K'],['New Honda HRV Matic','1,000K'],['Hyundai H1','1,300K'],['Daihatsu Terios','650K'],['Suzuki Ertiga','600K'],['Innova Zenix','1,000K'],['Avanza/Xenia','550K'],['Innova Grand','750K'],['Xpander','750K'],['Suzuki XL7','750K'],['New Xenia','750K'],['Innova Reborn','900K']];
+const groupCars = [['Toyota Hiace',16,'Cocok untuk keluarga besar & tour privat','1,400K'],['Isuzu Elf Long GIGA',18,'Rombongan kantor / gathering, kabin lega','1,550K'],['Isuzu Elf Short',13,'Lincah untuk rombongan sedang','1,050K']];
+const seats = (n) => /hiace/i.test(n) ? 16 : /ayla|agya|brio|ignis/i.test(n) ? 5 : 7;
+const trans = (n) => /manual/i.test(n) ? 'Manual' : 'Matic';
+
+/* ---------- car cards ---------- */
+function carCard(c, i, driverMode) {
+  const img = `assets/cars/car-${String(i + (driverMode ? 21 : 1)).padStart(2,'0')}.jpg`;
+  const msg = waLink(`Halo BaliRent! Saya mau booking *${c[0]}* (${driverMode ? 'Plus Driver & BBM' : 'Lepas Kunci'}) mulai IDR ${c[1]}/hari. Masih tersedia?`);
+  return `<article class="car-card group lift rounded-xl border border-ink/10 bg-white p-3 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_18px_40px_rgba(19,31,24,0.12)]">
+    <div class="relative overflow-hidden rounded-lg bg-leaf">
+      <img src="${img}" alt="${c[0]}" loading="lazy" class="h-32 w-full object-contain p-2 transition-transform duration-500 group-hover:scale-110">
+      <span class="absolute left-2 top-2 rounded-full px-2 py-0.5 text-[8px] font-bold uppercase tracking-wider ${driverMode ? 'bg-sun text-palm' : 'bg-palm text-leaf'}">${driverMode ? 'Plus Driver' : 'Lepas Kunci'}</span>
+    </div>
+    <h3 class="mt-3 min-h-[34px] text-[13px] font-bold leading-tight">${c[0]}</h3>
+    <div class="mt-1.5 flex flex-wrap gap-1.5 text-[9px] font-semibold text-ink/50">
+      <span class="rounded bg-leaf px-1.5 py-0.5">⚙ ${trans(c[0])}</span><span class="rounded bg-leaf px-1.5 py-0.5">👤 ${seats(c[0])} seat</span><span class="rounded bg-leaf px-1.5 py-0.5">⛽ Bensin</span>
+    </div>
+    <div class="mt-3 flex items-end justify-between border-t border-dashed border-ink/10 pt-3">
+      <div><span class="block text-[8px] font-bold uppercase tracking-[0.18em] text-ink/40">Mulai</span><b class="font-display text-[15px] font-extrabold text-brand">IDR ${c[1]}<span class="font-body text-[10px] font-medium text-ink/40">/hari</span></b></div>
+      <a href="${msg}" target="_blank" rel="noopener" aria-label="Booking ${c[0]}" class="grid h-9 w-9 place-items-center rounded-full bg-palm text-white transition-all duration-300 group-hover:rotate-[-8deg] group-hover:bg-brand">→</a>
+    </div>
+  </article>`;
+}
+document.getElementById('panel-self').innerHTML = selfCars.map((c,i) => carCard(c,i,false)).join('');
+document.getElementById('panel-driver').innerHTML = driverCars.map((c,i) => carCard(c,i,true)).join('');
+document.getElementById('panel-group').innerHTML = groupCars.map((g,i) => {
+  const msg = waLink(`Halo BaliRent! Saya mau tanya *${g[0]}* (${g[1]} seat) plus driver. Masih tersedia?`);
+  return `<div class="car-card group flex flex-col gap-4 rounded-xl border border-ink/10 bg-white p-6 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_18px_40px_rgba(19,31,24,0.12)] md:flex-row md:items-center md:gap-8">
+    <span class="font-display text-4xl font-extrabold text-palm/15 transition-colors group-hover:text-brand/25">0${i+1}</span>
+    <div class="flex-1"><b class="font-display text-lg font-extrabold">${g[0]}</b><p class="mt-0.5 text-[12px] text-ink/50">${g[2]}</p></div>
+    <span class="w-max rounded-full bg-leaf px-3 py-1.5 text-[10px] font-bold">👤 ${g[1]} Seat</span>
+    <span class="w-max rounded-full bg-leaf px-3 py-1.5 text-[10px] font-bold">🧑‍✈️ + Driver & BBM</span>
+    <b class="font-display text-xl font-extrabold text-brand">IDR ${g[3]}<span class="font-body text-[11px] font-medium text-ink/40">/hari</span></b>
+    <a href="${msg}" target="_blank" rel="noopener" class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-palm text-white transition-all duration-300 group-hover:rotate-[-8deg] group-hover:bg-brand">→</a>
+  </div>`;
+}).join('');
+
+/* ---------- tabs ---------- */
+const tabBtns = document.querySelectorAll('.tab-btn');
+const panels = document.querySelectorAll('.tab-panel');
+const counts = { self: selfCars.length + ' unit', driver: driverCars.length + ' unit', group: groupCars.length + ' unit' };
+function setTab(name) {
+  tabBtns.forEach(b => {
+    const on = b.dataset.tab === name;
+    b.classList.toggle('bg-palm', on); b.classList.toggle('text-leaf', on); b.classList.toggle('shadow', on);
+  });
+  panels.forEach(p => {
+    const on = p.id === 'panel-' + name;
+    p.classList.toggle('hidden', !on); p.classList.toggle('grid', on && name !== 'group');
+  });
+  document.getElementById('tabCount').textContent = counts[name];
+  const panel = document.getElementById('panel-' + name);
+  if (window.__motion) {
+    const { animate, stagger } = window.__motion;
+    animate(panel.querySelectorAll('.car-card'), { opacity:[0,1], y:[18,0] }, { duration:.45, delay:stagger(.035), ease:'easeOut' });
+  }
+}
+tabBtns.forEach(b => b.addEventListener('click', () => setTab(b.dataset.tab)));
+setTab('self');
+
+/* ---------- faq ---------- */
+const faqs = [
+  ['Apa syarat sewa mobil lepas kunci?','Cukup KTP, SIM A aktif, dan bukti booking. Verifikasi via WhatsApp sekitar 5 menit — tanpa proses berbelit.'],
+  ['Bisa diantar ke hotel atau villa?','Bisa. Kami melayani antar–jemput unit di area Kuta, Seminyak, Canggu, Nusa Dua, Ubud, dan sekitarnya.'],
+  ['Durasi sewa harian dihitung bagaimana?','Per 24 jam sejak serah terima kendaraan. Lewat dari itu dihitung overtime — informasikan saja ke admin.'],
+  ['Paket plus driver sudah termasuk BBM?','Ya. Paket Plus Driver & BBM sudah termasuk pengemudi dan bahan bakar sesuai itinerary kamu.'],
+  ['Bisa sewa multi-hari atau ke Lovina / Amed?','Bisa banget. Ada harga khusus untuk multi-hari — sebutkan rutenya, kami siapkan paket terbaik.'],
+  ['Kalau mobil trouble di jalan bagaimana?','Tenang, tim bantuan standby 24/7. Kalau diperlukan, kami siapkan unit pengganti secepatnya.']
+];
+document.getElementById('faqList').innerHTML = faqs.map(f => `<div class="faq-item border-b border-ink/10">
+  <button class="flex w-full items-center justify-between gap-6 py-5 text-left text-[15px] font-semibold transition-colors hover:text-brand"><span>${f[0]}</span><span class="faq-plus shrink-0 font-display text-2xl font-light leading-none">+</span></button>
+  <div class="faq-a"><div><p class="pb-5 pr-8 text-[13px] leading-6 text-ink/55">${f[1]}</p></div></div>
+</div>`).join('');
+document.querySelectorAll('.faq-item > button').forEach(b => b.addEventListener('click', () => b.parentElement.classList.toggle('open')));
+
+/* ---------- live WITA clock ---------- */
+const clockEl = document.getElementById('witaClock');
+const fmt = new Intl.DateTimeFormat('id-ID', { timeZone:'Asia/Makassar', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false });
+const tick = () => clockEl.textContent = fmt.format(new Date()).replace(/\./g, ':') + ' WITA';
+tick(); setInterval(tick, 1000);
+
+/* ---------- quick booking form ---------- */
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('qbStart').min = today;
+document.getElementById('qbEnd').min = today;
+document.getElementById('quickBook').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const d1 = document.getElementById('qbStart').value;
+  const d2 = document.getElementById('qbEnd').value;
+  const tipe = document.getElementById('qbType').value;
+  window.open(waLink(`Halo BaliRent! 👋 Saya mau cek ketersediaan unit:\n• Tanggal: ${d1} s/d ${d2}\n• Tipe sewa: ${tipe}\n\nBoleh minta info unit & harga?`), '_blank');
+});
+
+/* ---------- destinasi scroller ---------- */
+const scroller = document.getElementById('destScroller');
+document.getElementById('destPrev').addEventListener('click', () => scroller.scrollBy({ left:-420, behavior:'smooth' }));
+document.getElementById('destNext').addEventListener('click', () => scroller.scrollBy({ left: 420, behavior:'smooth' }));
+</script>
+
+<script type="module">
+/* Motion (motion.dev) — loaded dynamically so the page still works if CDN fails */
+let motion = null;
+try { motion = await import('https://cdn.jsdelivr.net/npm/motion@latest/+esm'); } catch {}
+if (!motion || !motion.stagger) {
+  motion = await new Promise((res) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js';
+    s.onload = () => res(window.Motion || null);
+    s.onerror = () => res(null);
+    document.head.appendChild(s);
+  });
+}
+if (motion && motion.animate) {
+  window.__motion = motion;
+  const { animate, inView, scroll, stagger } = motion;
+  document.documentElement.classList.add('js-motion');
+  const easeOut = [0.22, 1, 0.36, 1];
+
+  /* hero entrance */
+  animate('.hero-w', { opacity:[0,1], y:['110%',0] }, { duration:.9, delay:stagger(.12), ease:easeOut });
+  animate('.hero-fade', { opacity:[0,1], y:[24,0] }, { duration:.8, delay:stagger(.1, .5), ease:easeOut });
+
+  /* draw the underline under GAS. */
+  const line = document.querySelector('#gasLine path');
+  if (line) {
+    const len = line.getTotalLength();
+    line.style.strokeDasharray = len;
+    line.style.strokeDashoffset = len;
+    animate(line, { strokeDashoffset: 0 }, { duration:.7, delay:1.15, ease:'easeInOut' });
+  }
+
+  /* scroll reveals (stagger within groups) */
+  document.querySelectorAll('[data-reveal-group]').forEach(g =>
+    [...g.querySelectorAll(':scope > [data-reveal]')].forEach((el,i) => el.dataset.delay = (i * .08).toFixed(2)));
+  document.querySelectorAll('[data-reveal]').forEach(el =>
+    inView(el, () => animate(el, { opacity:[0,1], y:[26,0] }, { duration:.8, delay:+(el.dataset.delay || 0), ease:easeOut }), { amount:.25, once:true }));
+
+  /* animated counters */
+  document.querySelectorAll('.counter').forEach(el =>
+    inView(el, () => {
+      const target = parseFloat(el.dataset.target), dec = +(el.dataset.decimals || 0), suf = el.dataset.suffix || '';
+      animate(0, target, { duration:1.8, ease:[0.16,1,0.3,1], onUpdate: v => el.textContent = v.toFixed(dec) + suf });
+    }, { amount:.6, once:true }));
+
+  /* hero parallax drift */
+  const heroVis = document.getElementById('heroVisual');
+  if (heroVis && matchMedia('(min-width:1024px)').matches) {
+    scroll(animate(heroVis, { y:[36,-36] }, { ease:'linear' }), { target: heroVis, offset:['start end','end start'] });
+  }
+}
+</script>
+</body>
+</html>
